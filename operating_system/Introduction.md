@@ -21,4 +21,6 @@ An is a program that manages the computer hardware. It also provides a basis for
     - From the computer's point of view, the operating system is the program most intimately involved with the hardware.
     - A computer system has many resources that may be required to solve a problem: CPU time, memory space, file-storage space, I/0 devices, and so on. The operating system acts as the manager of these resources. Facing numerous and possibly conflicting requests for resources, the operating system must decide how to allocate them to specific programs and users so that it can operate the computer system efficiently and fairly. 
    
-<iframe width="560" height="315" src="https://www.youtube.com/embed/YwqexcfbucE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>    
+[![IMAGE of os](https://media.geeksforgeeks.org/wp-content/uploads/os.png)](https://www.youtube.com/watch?v=YwqexcfbucE&list=PLmXKhU9FNesSFvj6gASuWmQd23Ul5omtD)
+
+   
