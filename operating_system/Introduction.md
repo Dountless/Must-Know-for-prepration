@@ -24,3 +24,10 @@ An is a program that manages the computer hardware. It also provides a basis for
 [![IMAGE of os](https://media.geeksforgeeks.org/wp-content/uploads/os.png)](https://www.youtube.com/watch?v=YwqexcfbucE&list=PLmXKhU9FNesSFvj6gASuWmQd23Ul5omtD)
 
    
+## STORAGE DEFINITIONS AND NOTATION
+- A is the basic unit of computer storage. It can contain one of two values, zero and one.
+- A is 8 bits, and on most computers it is the smallest convenient chunk of storage. For example, most computers don't have an instruction to move a bit but do have one to move a byte.
+- A word is generally made up of one or more bytes. For example, a computer may have instructions to move 64-bit (8-byte) words.
+- A kilobyte, or KB, is 1,024 bytes; a megabyte, or MB, is 1,0242 bytes; and a gigabyte, or GB, !s 1,0243 bytes. 
+
+Toward this goal, computer hardware is constructed. Since bare hardware alone is not particularly easy to use, application programs are developed. These programs require certain common operations, such as those controlling the II0 devices. The common functions of controlling and allocating resources are then brought together into one piece of software: the operating system.
