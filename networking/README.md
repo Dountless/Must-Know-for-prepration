@@ -96,3 +96,125 @@ That’s network neutrality.
 Advocates say network neutrality is a big reason there has been so much innovation on the internet over the last two decades. Network neutrality keeps the barriers to entry for new websites and internet applications low. Supporters say that freedom has allowed the creation of dozens of innovative online services such as Google, Twitter, Netflix, Amazon, Skype, and more.
 
 They worry that without net neutrality, the internet would become less hospitable to new companies and innovative ideas. For example, if large ISPs began requiring video-streaming sites to pay extra to deliver video content to their customers, the expense and hassle of negotiating deals with dozens of network owners could make it difficult for the next YouTube to get traction.
+
+
+
+# Network Hardware
+There is no generally accepted taxonomy into which all computer net- works fit, but two dimensions stand out as important: `transmission technology` and `scale`.`
+
+## Transmission Technology 
+     
+- there are two types of transmission technology that are in widespread use: `broadcast links` and `point-to-point links`.
+ ```     
+ To go from the source to the destination on a network made up of point-to-point links.
+ Point-to-point transmission with exactly one sender and exactly one receiver is sometimes called unicasting.
+  ```        
+---
+
+```
+on a broadcast network, the communication channel is shared by all the machines on the network; packets sent by any machine are received by all the others.
+A wireless network is a common example of a broadcast link,
+As an analogy, consider someone standing in a meeting room and shouting ‘‘Watson, come here. I want you.’’ Although the packet may actually be received (heard) by many people, only Watson will respond; the others just ignore it.
+            
+```
+## Scale 
+    
+An alternative criterion for classifying networks is by scale. Distance is im- portant as a classification metric because different technologies are used at dif- ferent scales.
+
+At the top are the personal area networks, networks that are meant for one person.Beyond these come longer-range networks. These can be divided into local, metropolitan, and wide area networks, each with increasing scale. Finally, the connection of two or more networks is called an internetwork. The worldwide Internet is certainly the best-known (but not the only) example of an internetwork.
+
+
+![Screenshot 2022-03-15 at 6 22 12 PM](https://user-images.githubusercontent.com/61273477/158382259-6966d0dd-2b25-401a-a455-ef6954b2d879.png)
+
+
+### Personal Area Networks
+- PANs (Personal Area Networks) let devices communicate over the range of a person. A common example is a wireless network that connects a computer with its peripherals. Almost every computer has an attached monitor, keyboard, mouse, and printer. Without using wireless, this connection must be done with cables. So many new users have a hard time finding the right cables and plugging them into the right little holes (even though they are usually color coded) that most computer vendors offer the option of sending a technician to the user’s home to do it. To help these users, some companies got together to design a short-range wireless network called Bluetooth to connect these components without wires. The idea is that if your devices have Bluetooth, then you need no cables.
+- In the simplest form, Bluetooth networks use the master-slave paradigm of Fig. 1-7. The system unit (the PC) is normally the master, talking to the mouse, keyboard, etc., as slaves. The master tells the slaves what addresses to use, when they can broadcast, how long they can transmit, what frequencies they can use, and so on.
+
+![Screenshot 2022-03-15 at 6 23 10 PM](https://user-images.githubusercontent.com/61273477/158382327-a522b8ea-2c9e-484c-8093-cb2c8ca07b35.png)
+
+
+- PANs can also be built with other technologies that communicate over short ranges, such as RFID on smartcards and library books.
+
+
+
+### Local Area networks
+
+- A LAN is a privately owned network that operates within and nearby a single building like a home, of- fice or factory. LANs are widely used to connect personal computers and consu- mer electronics to let them share resources (e.g., printers) and exchange informa- tion. When LANs are used by companies, they are called enterprise networks.
+- Wireless LANs are very popular these days, especially in homes, older office buildings, cafeterias, and other places where it is too much trouble to install cables. In these systems, every computer has a radio modem and an antenna that it uses to communicate with other computers. In most cases, each computer talks to a device in the ceiling as shown in Fig. 1-8(a). This device, called an AP (Access Point), wireless router, or base station, relays packets between the wireless computers and also between them and the Internet.
+- There is a standard for wireless LANs called IEEE 802.11, popularly known as WiFi, which has become very widespread. It runs at speeds anywhere from 11 to hundreds of Mbps. (In this book we will adhere to tradition and measure line speeds in megabits/sec, where 1 Mbps is 1,000,000 bits/sec, and gigabits/sec, where 1 Gbps is 1,000,000,000 bits/sec.) Wired LANs use a range of different transmission technologies. Most of them use copper wires, but some use optical fiber.
+- Compared to wireless networks, wired LANs exceed them in all dimensions of performance. It is just easier to send signals over a wire or through a fiber than through the air.
+- The topology of many wired LANs is built from point-to-point links. IEEE 802.3, popularly called Ethernet.
+![Screenshot 2022-03-15 at 6 23 43 PM](https://user-images.githubusercontent.com/61273477/158382378-872bd95c-114a-4458-a348-1e83386fe997.png)
+
+
+### Metropolitan Area Networks
+- A MAN (Metropolitan Area Network) covers a city. The best-known ex- amples of MANs are the cable television networks available in many cities. These systems grew from earlier community antenna systems used in areas with poor over-the-air television reception. In those early systems, a large antenna was placed on top of a nearby hill and a signal was then piped to the subscribers’ houses.
+- To a first approximation, a MAN might look some- thing like the system shown in Fig. 1-9. In this figure we see both television sig- nals and Internet being fed into the centralized cable headend for subsequent dis- tribution to people’s homes.
+- Cable television is not the only MAN, though. Recent developments in high- speed wireless Internet access have resulted in another MAN, which has been standardized as IEEE 802.16 and is popularly known as WiMAX.
+
+![Screenshot 2022-03-15 at 6 24 16 PM](https://user-images.githubusercontent.com/61273477/158382427-7ca4ab5f-9892-43c2-9c70-d69d40a5d5cf.png)
+
+
+### Wide Area Networks
+- A WAN (Wide Area Network) spans a large geographical area, often a country or continent.
+
+#### We will begin our discussion with wired WANs, using the example of a company with branch offices in different cities.
+- The WAN  is a network that connects offices in Perth, Melbourne, and Brisbane. Each of these offices contains computers intended for running user (i.e., application) programs. We will follow traditional usage and call these ma- chines hosts. The rest of the network that connects these hosts is then called the communication subnet, or just subnet for short. The job of the subnet is to carry messages from host to host, just as the telephone system carries words (really just sounds) from speaker to listener.
+- In most WANs, the `subnet` consists of two distinct components:` transmission lines and switching elements.`
+   - ` Transmission lines` move bits between machines. They can be made of copper wire, optical fiber, or even radio links.
+   - `Switching elements`, or just switches, are specialized computers that connect two or more transmission lines. When data arrive on an incoming line, the switching element must choose an outgoing line on which to forward them. These switching computers have been called by various names in the past; the name router is now most commonly used.
+- A short comment about the term ‘‘subnet’’ is in order here. Originally, its only meaning was the collection of routers and communication lines that moved packets from the source host to the destination host.
+
+![Screenshot 2022-03-15 at 6 24 41 PM](https://user-images.githubusercontent.com/61273477/158383368-1cbd9aa5-2a17-47ec-a53b-e14b6364119e.png)
+
+```
+- We are now in a position to look at two other varieties of WANs.
+- First, rather than lease dedicated transmission lines, a company might connect its offices to the Internet This allows connections to be made between the offices as virtual link that use the underlying capacity of the Internet. This arrangement, shown in Fig. 1-11, is called a VPN (Virtual Private Network).
+
+
+
+```
+![Screenshot 2022-03-15 at 6 25 05 PM](https://user-images.githubusercontent.com/61273477/158383558-714eae3d-dc79-42c7-a60f-c77cf8b66ec4.png)
+
+
+```
+
+- The second variation is that the subnet may be run by a different company. The subnet operator is known as a network service provider.
+
+- The subnet operator will con- nect to other customers too, as long as they can pay and it can provide service.Such a subnet operator is called an ISP (Internet Service Provider) and the subnet is an ISP network. Its customers who connect to the ISP receive Internet service.
+
+
+```
+
+![Screenshot 2022-03-15 at 6 25 19 PM](https://user-images.githubusercontent.com/61273477/158383606-e87f1029-deda-463e-8fbb-0ed70bbb6133.png)
+
+
+#### Note -
+```
+WANs, the network contains many transmission lines, each connecting a pair of routers. If two routers that do not share a transmission line wish to communicate, they must do this indirectly, via other routers.may be many paths in the network that connect these two routers. How the net- work makes the decision as to which path to use is called the routing algorithm. Many such algorithms exist. How each router makes the decision as to where to send a packet next is called the forwarding algorithm. Many of them exist too.
+```
+
+#### Other kinds of WANs make heavy use of wireless technologies. 
+- In satellite systems, each computer on the ground has an antenna through which it can send data to and receive data from to a satellite in orbit. All computers can hear the output from the satellite,Satellite networks are inherently broadcast and are most useful when the broadcast property is im- portant.
+- The cellular telephone network is another example of a WAN that uses wire- less technology.
+
+
+### Internetworks
+
+A collection of interconnected net- works is called an internetwork or internet
+
+- Subnets, networks, and internetworks are often confused. 
+- The term ‘‘subnet’’ makes the most sense in the context of a wide area network, where it refers to the collection of routers and communication lines owned by the network operator. As an analogy, the telephone system consists of telephone switching offices connect- ed to one another by high-speed lines, and to houses and businesses by low-speed lines. These lines and equipment, owned and managed by the telephone com- pany, form the subnet of the telephone system. The telephones themselves (the hosts in this analogy) are not part of the subnet.
+- A network is formed by the combination of a subnet and its hosts. A subnet might be de- scribed as a network, as in the case of the ‘‘ISP network’’
+- An inter- network might also be described as a network, as in the case of the WAN.
+There are two rules of thumb that are useful.
+
+- First, if different organizations have paid to construct different parts of the network and each maintains its part, we have an internetwork rather than a single network.
+- Second, if the underlying tech- nology is different in different parts (e.g., broadcast versus point-to-point and wired versus wireless), we probably have an internetwork.
+
+```
+To go deeper, we need to talk about how two different networks can be con- nected. The general name for a machine that makes a connection between two or more networks and provides the necessary translation, both in terms of hardware and software, is a gateway.
+
+```
+
