@@ -218,3 +218,92 @@ To go deeper, we need to talk about how two different networks can be con- necte
 
 ```
 
+
+
+# NETWORK SOFTWARE
+
+The first computer networks were designed with the hardware as the main concern and the software as an afterthought.
+
+## Protocol Hierarchies
+- To reduce their design complexity, most networks are organized as a stack of layers or levels, each one built upon the one below it. The number of layers, the name of each layer, the contents of each layer, and the function of each layer dif- fer from network to network. The purpose of each layer is to offer certain ser- vices to the higher layers while shielding those layers from the details of how the offered services are actually implemented.
+
+- The fundamental idea is that a particular piece of software (or hardware) provides a service to its users but keeps the details of its internal state and algorithms hidden from them.When layer n on one machine carries on a conversation with layer n on anoth- er machine, the rules and conventions used in this conversation are collectively known as the layer n protocol. Basically, a protocol is an agreement between the communicating parties on how communication is to proceed.
+
+- The entities comprising the corresponding layers on different machines are called `peers`. The peers may be software processes, hardware devices, or even human beings. In other words, it is the peers that communicate by using the protocol to talk to each other.
+
+
+![Screenshot 2022-03-16 at 4 37 31 PM](https://user-images.githubusercontent.com/61273477/158576854-2ed5b67d-31e2-481c-b348-6af156edcf3a.png)
+
+
+
+- In reality, no data are directly transferred from layer n on one machine to layer n on another machine. Instead, each layer passes data and control infor- mation to the layer immediately below it, until the lowest layer is reached. Below layer 1 is the physical medium through which actual communication occurs.
+- Between each pair of adjacent layers is an interface. The interface defines which primitive operations and services the lower layer makes available to the upper one. 
+
+- The peer process abstraction is crucial to all network design. Using it, the unmanageable task of designing the complete network can be broken into several smaller, manageable design problems, namely, the design of the individual layers is called ‘‘Network Software,’’
+- it is worth pointing out that the lower layers of a protocol hierarchy are frequently implemented in hardware or firmware. Nevertheless, complex protocol algorithms are involved, even if they are embedded (in whole or in part) in hardware.
+
+## Network architecture
+
+- A set of layers and protocols is called a network architecture.
+- A list of the protocols used by a certain system, one protocol per layer, is called a protocol stack.
+
+
+#### Now consider a more technical example: how to provide communication to the top layer of the five-layer
+
+```
+ A message, M, is produced by an application process running in layer 5 and given to layer 4 for transmission. Layer 4 puts a header in front of the message to identify the message and passes the result to layer 3. The header includes control information, such as addresses, to allow layer 4 on the destination machine to deliver the message. Other ex- amples of control information used in some layers are sequence numbers (in case the lower layer does not preserve message order), sizes, and times.
+In many networks, no limit is placed on the size of messages transmitted in the layer 4 protocol but there is nearly always a limit imposed by the layer 3 pro- tocol. Consequently, layer 3 must break up the incoming messages into smaller units, packets, prepending a layer 3 header to each packet. In this example, M is split into two parts, M 1 and M 2 , that will be transmitted separately.
+Layer 3 decides which of the outgoing lines to use and passes the packets to layer 2. Layer 2 adds to each piece not only a header but also a trailer, and gives the resulting unit to layer 1 for physical transmission. At the receiving machine the message moves upward, from layer to layer, with headers being stripped off as it progresses. None of the headers for layers below n are passed up to layer n.
+
+```
+
+
+![Screenshot 2022-03-16 at 4 38 12 PM](https://user-images.githubusercontent.com/61273477/158576882-65bcff5b-f36a-4f0d-9bfb-1f8f35917f62.png)
+
+
+
+
+
+## Design Issues for the Layers
+
+Some of the key design issues that occur in computer networks will come up in layer after layer.
+
+#### Reliability is the design issue of making a network.
+   - Think about the bits of a packet traveling through the network. There is a chance that some of these bits will be received damaged (inverted) due to fluke electrical noise, random wireless signals, hardware flaws, software bugs and so on. How is it possible that we find and fix these errors? One mechanism for finding errors in received information uses codes for er- ror detection. Information that is incorrectly received can then be retransmitted until it is received correctly. More powerful codes allow for error correction.
+   - Another reliability issue is finding a working path through a network. Often there are multiple paths between a source and destination, and in a large network, there may be some links or routers that are broken. The network should automatically make this decision. This topic is called routing.
+
+#### A second design issue concerns the evolution of the network.
+
+- Over time, net- works grow larger and new designs emerge that need to be connected to the exist- ing network.
+
+- When networks get large, new problems arise. Cities can have traffic jams, a shortage of telephone numbers, and it is easy to get lost.Designs that continue to work well when the network gets large are said to be scalable.
+
+#### A third design issue is resource allocation.
+  
+- Networks provide a service to hosts from their underlying resources, such as the capacity of transmission lines. To do this well, they need mechanisms that divide their resources so that one host does not interfere with another too much.
+- An allocation problem that occurs at every level is how to keep a fast sender from swamping a slow receiver with data. This subject is called flow control.
+
+#### The last major design issue is to secure the network.
+
+- Mechanisms that provide `confidentiality` defend against this threat, and they are used in multiple layers.
+-  Mechanisms for `authentication` prevent someone from impersonating someone else.
+-  mechanisms for `integrity` prevent surreptitious changes to messages, such as altering ‘‘debit my account $10’’ to ‘‘debit my account $1000.’’ All of these designs are based on cryptography.
+
+
+
+## Connection-Oriented Versus Connectionless Service
+Layers can offer two different types of service to the layers above them: con- nection-oriented and connectionless.
+
+#### Connection-oriented service 
+   
+- it  is modeled after the telephone system. To talk to someone, you pick up the phone, dial the number, talk, and then hang up. Simi- larly, to use a connection-oriented network service, the service user first estab- lishes a connection, uses the connection, and then releases the connection. The essential aspect of a connection is that it acts like a tube: the sender pushes objects (bits) in at one end, and the receiver takes them out at the other end. In most cases the order is preserved so that the bits arrive in the order they were sent.
+- In some cases when a connection is established, the sender, receiver, and sub- net conduct a negotiation about the parameters to be used, such as maximum message size, quality of service required, and other issues. Typically, one side makes a proposal and the other side can accept it, reject it, or make a counter- proposal.
+
+#### connectionless service  
+    
+- it is modeled after the postal system. Each message (letter) carries the full destination address,and each one is routed through the intermediate nodes inside the system indepen- dent of all the subsequent messages.
+-  Normally, when two messages are sent to the same destination, the first one sent will be the first one to arrive. However, it is possible that the first one sent can be delayed so that the second one arrives first.
+
+   
+  ![Screenshot 2022-03-16 at 4 38 47 PM](https://user-images.githubusercontent.com/61273477/158576917-37576f81-355a-43b8-a84d-8943e88622ec.png)
+
