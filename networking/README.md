@@ -307,3 +307,34 @@ Layers can offer two different types of service to the layers above them: con- n
    
   ![Screenshot 2022-03-16 at 4 38 47 PM](https://user-images.githubusercontent.com/61273477/158576917-37576f81-355a-43b8-a84d-8943e88622ec.png)
 
+
+
+
+# Service Primitives
+
+- A service is formally specified by a set of primitives (operations) available to user processes to access the service. These primitives tell the service to perform some action or report on an action taken by a peer entity. 
+- If the protocol stack is located in the operating system, as it often is, the primitives are normally system calls. These calls cause a trap to kernel mode, which then turns control of the ma- chine over to the operating system to send the necessary packets.
+- The set of primitives available depends on the nature of the service being pro- vided. The primitives for connection-oriented service are different from those of connectionless service.
+
+![Screenshot 2022-03-16 at 7 41 01 PM](https://user-images.githubusercontent.com/61273477/158609482-2b1d140d-9694-4bfe-a435-d49b9541a8f1.png)
+
+
+
+#### These primitives might be used for a request-reply interaction in a client-ser- ver environment.
+
+![Screenshot 2022-03-16 at 7 42 13 PM](https://user-images.githubusercontent.com/61273477/158609543-7a5e9a68-7550-42b3-a834-748f59f4dd6d.png)
+
+
+- First, the server executes LISTEN to indicate that it is prepared to accept in- coming connections.
+- Next, the client process executes CONNECT to establish a connection with the server.When the packet arrives at the server, the operating system sees that the pack- et is requesting a connection.
+
+- The server process can then establish the connection with the ACCEPT call. This sends a response back to the client process to accept the connection. The arrival of this response then releases the client. At this point the client and server are both running and they have a connection established.
+- The next step is for the server to execute RECEIVE to prepare to accept the first request. 
+- Then the client executes SEND to transmit its request (3) followed by the ex- ecution of RECEIVE to get the reply.
+-  After it has done the work, the server uses SEND to return the answer to the client 
+-  When the client is done, it executes DISCONNECT to terminate the connection,suspending the client and sending a packet to the server saying that the connection is no longer needed.
+-  When the server gets the packet, it also issues a DISCONNECT of its own, ack- nowledging the client and releasing the connection . When the server’s packet gets back to the client machine, the client process is released and the connection is broken. In a nutshell, this is how connection-oriented communication works.
+
+#  The Relationship of Services to Protocols
+-  A service is a set of primitives (operations) that a layer provides to the layer above it.
+-  A protocol, in contrast, is a set of rules governing the format and meaning of the packets, or messages that are exchanged by the peer entities within a layer. Entities use protocols to implement their service definitions.
