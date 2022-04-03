@@ -338,3 +338,86 @@ Layers can offer two different types of service to the layers above them: con- n
 #  The Relationship of Services to Protocols
 -  A service is a set of primitives (operations) that a layer provides to the layer above it.
 -  A protocol, in contrast, is a set of rules governing the format and meaning of the packets, or messages that are exchanged by the peer entities within a layer. Entities use protocols to implement their service definitions.
+
+## REFERENCE MODELS
+Now that we have discussed layered networks in the abstract, it is time to look at some examples. We will discuss two important network architectures: the OSI reference model and the TCP/IP reference model. Although the protocols associated with the OSI model are not used any more, the model itself is actually quite general and still valid, and the features discussed at each layer are still very important. The TCP/IP model has the opposite properties: the model itself is not of much use but the protocols are widely used.
+
+## The OSI Reference Model
+
+The OSI model (minus the physical medium) is shown in diagram . This model is based on a proposal developed by the International Standards Organization (ISO) as a first step toward international standardization of the protocols used in the various layers (Day and Zimmermann, 1983). It was revised in 1995 (Day, 1995). The model is called the ISO OSI (Open Systems Interconnection) Reference Model because it deals with connecting open systems—that is, systems that are open for communication with other systems. We will just call it the `OSI model` for short.
+
+![Screenshot 2022-04-03 at 10 26 48 AM](https://user-images.githubusercontent.com/61273477/161412255-e0e20973-801c-4e10-8145-22f640575ce8.png)
+
+- Layred Task- International standard organization (ISO)- proposed an open system Interconnection (OSI) model - allow two system to communicate regardless of their architecture.
+-  A protocol, in contrast, is a set of rules governing the format and meaning of the packets, or messages that are exchanged by the peer entities within a layer. Entities use protocols to implement their service definitions.
+
+- The purpose of the OSI model is to show how to faciliate communication between different system without requiring changes to the logic of the underlying hardware and software.
+
+- The OSI model is not a protocol; it is a model for undestanding and designing a network architecture that is flexible , robust and interoperable.
+
+It consists of seven separate  but related layers, each of which defines a part of the process of moving information across a network.
+
+
+### `Physical layer` 
+The physical layer comes with some responsibility .
+
+- the physical layer defines the characteristics of `interface between device and transmission medium`.
+
+-  `Representation off bits`: the physical layer data consists of stream of bits (sequence of 0s and 1s) with no interpretation,To be transmitted ,bits must be encoded into electrical-signal or optical.
+
+- `Data rate`: the transmission rate , number of bits sent per second define by physical layer.
+
+ - `Line configuration` : The physical layer concerned with the connection of devices to media. 
+
+- `Physical topology ` : it define how devices are connected to make a network.
+
+- `Transmission mode` : physical layer also define the direction of transmissiion between two devices : simplex,half-duplex or full-duplex.
+
+### `Data link layer`
+
+- `Framing` : data link layer divides the stream of bits received by network layer into manageable data units called frames.
+
+- `Physical addressing` : data link layer responsible for manage physical (MAC) addressing. if frames are to be distributed to different system on the network , the data link layer adds the header on the frame to define the sender or receiver of the frame.
+
+
+- `Access control` : When two or more devices are connected to the same link , data link layer protocol are necessary to determine  which device has control over the link at any given time
+
+Broadcast networks have an additional issue in the data link layer: how to control access to the shared channel. A special sublayer of the data link layer, the medium access control sublayer, deals with this problem.
+
+
+- `Flow controll` : In data communications, flow control is the process of managing the rate of data transmission between two nodes to prevent a fast sender from overwhelming a slow receiver. It provides a mechanism for the receiver to control the transmission speed, so that the receiving node is not overwhelmed with data from transmitting node.
+
+- `Error controll` : Error control is basically process in data link layer of detecting or identifying and re-transmitting data frames that might be lost or corrupted during transmission.Data-link layer uses the techniques of error control simply to ensure and confirm that all the data frames or packets, i.e. bit streams of data, are transmitted or transferred from sender to receiver with certain accuracy.
+
+
+### `Network layer` 
+ The network layer responsible for the  `source to destination delivery ` of packets.
+
+- `Logical addressing`: if a packet passes the network boundry , we need to another addressing system to help distinguish the source and destination system. the network layer adds a header to the packets comming from the upper layer that, amoung other things, include the logical address of sender and receiver.
+
+- `Routing` : When a device has multiple paths to reach a destination, it always selects one path by preferring it over others. This selection process is termed as Routing. Routing is done by special network devices called routers or it can be done by means of software processes.
+
+### `Transport layer` 
+ The transport layer header must include a type of address called a service-point address (or port address). the network layer gets each packets to the correct computer; the transport layer gets the entire message to the correct process on that computer. the transport layer is responsible for process to process delivery of the entire message.
+
+- `segmentation and reassembly`: A message is divided into transmittable segments, with each segment containing a sequence number. These numbers enable the transport layer to reassemble the message correctly upon arriving at destination and to identify and replace packets that were lost in transmission. 
+
+- `Connection control `: the transport layer can be either connectionless or connection oriented.
+
+- `Flow control `: Like the data link layer, the transport layer is responsible for flow control.however, flow control at this layer is performed end to end rather than across a single link.
+
+- `Error Control`: like the data link layer , the transport layer is responsible for error control. However , error control at this layer is performed process-to-process rather than across a single link. the sending transport layer make sure that the entire message arrives at the receiving transport layer without error (damage , loss , or duplication ). error correction is usually achieved through retransmission.
+
+### `Session layer`
+This layer allows users on different machines to establish active communications sessions between them. It is responsible for establishing, maintaining, synchronizing, terminating sessions between end-user applications. 
+
+### `Presentation layer`
+- This layer allows users on different machines to establish active communications sessions between them.
+- It is responsible for establishing, maintaining, synchronizing, terminating sessions between end-user applications. 
+- This layer encodes the message from the user-dependent format to the common format and vice-versa for communication between dissimilar systems.
+
+
+### `Application layer` 
+- Application layer is the top most layer in OSI and TCP/IP layered model. This layer exists in both layered Models because of its significance, of interacting with user and user applications. This layer is for applications which are involved in communication system.
+
+- A user may or may not directly interacts with the applications. Application layer is where the actual communication is initiated and reflects. Because this layer is on the top of the layer stack, it does not serve any other layers. Application layer takes the help of Transport and all layers below it to communicate or transfer its data to the remote host.
